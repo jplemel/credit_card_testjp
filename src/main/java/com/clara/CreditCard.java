@@ -50,41 +50,55 @@ public class CreditCard {
 
                 boolean even = false;
 
+                System.out.println("Before for loop " + sum);
 
+                for (int i = ccArray.length-1; i >= 0 ; i--){
 
-                for (int i = ccArray.length ; i < 0 ; i--){
-
-                    even = !even;
 
                     if (even){
+                        System.out.println("if even");
+                        //String x = new String();
+                        //x = Integer.toString(ccArray[i] * 2);
 
-                        String x = Integer.toString((ccArray[i] * 2));
+                        int x = ccArray[i] * 2;
 
                         //if its even and has 2 digits after multiplying by 2
-                        if (x.length() == 2){
+                        if (x > 10){
 
-                            System.out.println("if x.length ==2 happened");
+                            System.out.println("if x.length "+ x +" ==2 happened");
 
                             //int firstInt = Integer.parseInt(x);
 
                             //add the two digits together
-                            int tempNum = x.charAt(0) + x.charAt(1);
+                            String str = Integer.toString(x);
+                            System.out.println("str: "+str);
+                            int firstNum = str.charAt(0)-'0';
+                            int secNum = str.charAt(1)-'0';
+                            int tempNum = firstNum + secNum;
+                            System.out.println("tempNum: "+tempNum);
 
                             //tempNum added to sum
                             sum += tempNum;
-
+                            System.out.println(sum);
+                        }
+                        else
+                        {
+                            sum += x;
+                            System.out.println(sum);
                         }
 
                     } else {
-
+                        System.out.println("if odd");
                         //adds all of the numbers together inside the array
                         sum += ccArray[i];
+                        System.out.println(sum);
 
                     }
+                    even = !even;
                 }
 
                 if(sum % 10 == 0){
-
+                    System.out.println(sum);
                     System.out.println("Success!");
 
                     return true;
